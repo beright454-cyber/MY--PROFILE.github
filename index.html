@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subrata Mondal | Multi-Dimensional Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=JetBrains+Mono:wght@400;800&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00ffcc;
+            --secondary: #ff00ff;
+            --void: #05020a;
+        }
+        
+        body { 
+            background-color: var(--void); 
+            color: #fff; 
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* AUTO COLOR CHANGE ANIMATION */
+        @keyframes colorShift {
+            0% { border-color: #ff00ff; box-shadow: 0 0 20px #ff00ff; }
+            33% { border-color: #00ffcc; box-shadow: 0 0 20px #00ffcc; }
+            66% { border-color: #ffff00; box-shadow: 0 0 20px #ffff00; }
+            100% { border-color: #ff00ff; box-shadow: 0 0 20px #ff00ff; }
+        }
+
+        .dynamic-border {
+            border: 2px solid;
+            animation: colorShift 8s infinite linear;
+        }
+
+        /* WATER DROP EFFECT */
+        .resume-page {
+            position: relative;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .resume-page:active {
+            transform: scale(0.98) translateY(10px);
+            filter: url('#liquid-filter');
+        }
+
+        /* SECTIONS */
+        .full-page { min-height: 100vh; padding: 100px 20px; display: flex; flex-direction: column; align-items: center; }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .service-item {
+            padding: 15px;
+            font-size: 10px;
+            text-transform: uppercase;
+            font-family: 'JetBrains Mono';
+            text-align: center;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .service-item:hover { transform: translateY(-5px) scale(1.05); filter: brightness(1.2); }
+
+    </style>
+</head>
+<body>
+
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display:none;">
+        <defs>
+            <filter id="liquid-filter">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="liquid" />
+            </filter>
+        </defs>
+    </svg>
+
+    <nav class="fixed w-full z-[100] glass px-8 py-4 flex justify-between items-center border-b border-white/10">
+        <div class="font-['Orbitron'] font-black text-xl tracking-tighter">SUBRATA<span class="text-[#00ffcc]">.8D</span></div>
+        <div class="hidden md:flex space-x-6 text-[10px] font-bold uppercase tracking-widest">
+            <a href="#contact" class="hover:text-[#00ffcc]">Contact</a>
+            <a href="#ai" class="hover:text-[#ff00ff]">AI Architect</a>
+            <a href="#industrial" class="hover:text-yellow-400">Industrial</a>
+            <a href="#resume" class="hover:text-blue-400">8D Resume</a>
+        </div>
+    </nav>
+
+    <section id="contact" class="full-page">
+        <div class="glass p-10 max-w-4xl w-full text-center dynamic-border">
+            <img src="https://lh3.googleusercontent.com/d/1QpLuTQwMlkp0e0o-RX0pz2oiMs6xpUlU" class="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-[#00ffcc] object-cover">
+            <h1 class="font-['Orbitron'] text-5xl font-black mb-2 uppercase">[cite: 1] Subrata Mondal</h1>
+            <p class="font-['JetBrains_Mono'] text-[#00ffcc] mb-6 uppercase tracking-widest">Multi-Disciplinary Specialist</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left font-['JetBrains_Mono'] text-sm">
+                <div class="p-4 bg-white/5 rounded-lg">
+                    <p class="text-gray-400">LOCATION</p>
+                    <p>[cite: 4, 5] Wiatrakowa 11, Lowicz, Poland, EU</p>
+                </div>
+                <div class="p-4 bg-white/5 rounded-lg">
+                    <p class="text-gray-400">PHONE</p>
+                    <p>[cite: 2] +48 510 820 441</p>
+                </div>
+                <div class="p-4 bg-white/5 rounded-lg">
+                    <p class="text-gray-400">EMAIL</p>
+                    <p>[cite: 3] beright454@gmail.com</p>
+                </div>
+                <div class="p-4 bg-white/5 rounded-lg">
+                    <p class="text-gray-400">LANGUAGES</p>
+                    <p>[cite: 68, 69, 70, 71, 72] English, Hindi, Bangla, Arabic, Polish</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-20 w-full max-w-6xl">
+            <h2 class="font-['Orbitron'] text-center text-2xl mb-10 uppercase tracking-[0.5em]">60 Core Services</h2>
+            <div class="service-grid" id="service-container"></div>
+        </div>
+    </section>
+
+    <section id="ai" class="full-page bg-[#0a0a1f]">
+        <h2 class="font-['Orbitron'] text-4xl font-black mb-10 text-[#ff00ff]">AI & SOFTWARE ARCHITECT</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl">
+            <div class="glass p-8 border-t-4 border-[#ff00ff]">
+                <h3 class="font-bold mb-4">Neural Networks</h3>
+                <p class="text-sm text-gray-400">Custom LLM integration and OCR processing using Python and Node.js.</p>
+            </div>
+            <div class="glass p-8 border-t-4 border-[#00ffcc]">
+                <h3 class="font-bold mb-4">Google Apps Script</h3>
+                <p class="text-sm text-gray-400">Expert automation of Google Sheets, Workspace, and custom API connections.</p>
+            </div>
+            <div class="glass p-8 border-t-4 border-yellow-400">
+                <h3 class="font-bold mb-4">MERN Stack</h3>
+                <p class="text-sm text-gray-400">Scalable full-stack applications with MongoDB, Express, React, and Node.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="industrial" class="full-page bg-[#1a1a1a]">
+        <h2 class="font-['Orbitron'] text-4xl font-black mb-10 text-yellow-500 uppercase">Industrial Specialist</h2>
+        <div class="max-w-4xl glass p-10 border-l-8 border-yellow-500">
+            <h3 class="text-2xl font-bold mb-4 uppercase">[cite: 7] Sandblaster & Spray Painter</h3>
+            <p class="mb-6 text-gray-300 italic"> 6 years of expertise in high-pressure industrial environments across Poland and Qatar.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-[#00ffcc] font-bold mb-2 uppercase">Technical Expertise</h4>
+                    <ul class="text-sm space-y-2 text-gray-400">
+                        <li>[cite: 18] Sandblasting (Various Equipment)</li>
+                        <li>[cite: 19] Spray Painting (Airless/Conventional)</li>
+                        <li>[cite: 22, 23] Blast Pot & Spray Gun Operation</li>
+                        <li>[cite: 10, 12, 13, 14] Intumescent Fire Protection Coatings</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-yellow-500 font-bold mb-2 uppercase">Safety & Equipment</h4>
+                    <ul class="text-sm space-y-2 text-gray-400">
+                        <li>[cite: 45] PPE, Full-body suit, Blast Helmet</li>
+                        <li>[cite: 29] Confined Space Entry Specialist</li>
+                        <li>[cite: 36] Forklift & Manual Vehicle Operation</li>
+                        <li>[cite: 44, 57] Equipment Maintenance & Quality Control</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume" class="full-page">
+        <h2 class="font-['Orbitron'] text-4xl font-black mb-10 text-blue-400 uppercase">8D Resume Dimension</h2>
+        <p class="text-xs font-mono text-gray-500 mb-4 tracking-widest">TOUCH THE RESUME TO TRIGGER LIQUID COLLAPSE</p>
+        
+        <div class="resume-page glass p-12 max-w-3xl w-full dynamic-border bg-black/80" id="resume-card">
+            <div class="flex justify-between border-b border-white/10 pb-6 mb-6">
+                <div>
+                    <h2 class="text-3xl font-black uppercase">[cite: 1] Subrata Mondal</h2>
+                    <p class="text-blue-400 font-mono">[cite: 5] Lowicz, Poland</p>
+                </div>
+                <div class="text-right text-xs font-mono text-gray-500">
+                    ID: 8D-RES-2026<br>STATUS: ACTIVE
+                </div>
+            </div>
+
+            <div class="space-y-8 text-sm">
+                <div>
+                    <h3 class="text-blue-400 font-bold uppercase mb-2">Work Experience</h3>
+                    <div class="mb-4">
+                        <p class="font-bold">[cite: 51] Vinci Play, Poland (2021 - Present)</p>
+                        <p class="text-gray-400 text-xs">[cite: 52, 54, 58] Sandblasting, Industrial Coating, & Safety Compliance.</p>
+                    </div>
+                    <div>
+                        <p class="font-bold">[cite: 59] Rising Star, Qatar (2017 - 2020)</p>
+                        <p class="text-gray-400 text-xs">[cite: 61, 62, 63] Surface Preparation, Flaw Repair, & Power Washing.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-blue-400 font-bold uppercase mb-2">Technical Skills Summary</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        [cite: 17, 18, 19, 21, 24] Expert in industrial coating application, quality control inspection, and precision sandblasting. 
+                        [cite: 48, 49] Extensive background in computer basics and software automation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Generate 60 services with different colors
+        const colors = ['#00ffcc', '#ff00ff', '#ffff00', '#0099ff', '#ff3300', '#33ff33'];
+        const services = [
+            "MERN Development", "Apps Script Automation", "AI Integration", "Sandblasting", "Spray Painting", 
+            "Fire Protection Coating", "Surface Prep", "Quality Inspection", "Database Design", "Cloud Hosting",
+            "API Development", "Python Scripting", "Industrial Safety", "Equipment Maintenance", "Blast Pot Operation",
+            "Airless Spraying", "Steel Cleaning", "Paint Mixing", "Structural Protection", "Blueprint Reading",
+            "Technical Writing", "Hazard ID", "Risk Assessment", "PPE Expert", "Confined Space Entry",
+            "Grinding Materials", "Forklift Operation", "Manual Driving", "Wallpaper Installation", "Wall Painting",
+            "Metal Loading", "Inventory Management", "System Analysis", "Neural Networks", "OCR Technology",
+            "Web Animation", "3D Modeling", "Cyber Security", "Linux Management", "UI/UX Design",
+            "Graphic Design", "Logo Creation", "Brand Strategy", "Market Research", "Consultation",
+            "Project Management", "Quality Control", "Automation Engineering", "Robotics Basics", "App Deployment",
+            "Version Control", "Unit Testing", "SEO Optimization", "Digital Marketing", "Video Editing",
+            "Motion Graphics", "Data Entry", "Spreadsheet Logic", "Hardware Repair", "Network Setup"
+        ];
+
+        const container = document.getElementById('service-container');
+        services.forEach((s, i) => {
+            const div = document.createElement('div');
+            div.className = 'service-item glass';
+            div.innerText = s;
+            div.style.borderBottom = `3px solid ${colors[i % colors.length]}`;
+            div.style.color = colors[i % colors.length];
+            container.appendChild(div);
+        });
+
+        // Toggle Liquid Class on touch/click for Resume
+        const resume = document.getElementById('resume-card');
+        resume.addEventListener('mousedown', () => {
+            resume.style.filter = "url('#liquid-filter')";
+        });
+        resume.addEventListener('mouseup', () => {
+            resume.style.filter = "none";
+        });
+    </script>
+</body>
+</html>
